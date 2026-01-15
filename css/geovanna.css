@@ -1,0 +1,372 @@
+/* Variáveis de Cores e Configurações */
+:root {
+    --primary-pink: #ff007f;
+    --primary-purple: #8a2be2;
+    --dark-bg: #0a0a0a;
+    --darker-bg: #050505;
+    --text-light: #ffffff;
+    --text-gray: #b0b0b0;
+    --neon-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+    --purple-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    --gradient-main: linear-gradient(135deg, #ff007f 0%, #8a2be2 100%);
+}
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--dark-bg);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes neonPulse {
+    0% { box-shadow: 0 0 5px rgba(255, 0, 127, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 0, 127, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(255, 0, 127, 0.5); }
+}
+
+/* Cabeçalho */
+header {
+    background: var(--darker-bg);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 0, 127, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 40%);
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+header .subtitle {
+    font-size: 1.5rem;
+    color: var(--text-gray);
+    font-weight: 300;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Navegação */
+nav {
+    background-color: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 0, 127, 0.3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 12px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--primary-pink);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-main);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 80%;
+}
+
+/* Conteúdo Principal */
+main {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+    margin: 60px auto;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    border-color: rgba(255, 0, 127, 0.3);
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--primary-pink);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+section h2::before {
+    content: '';
+    width: 40px;
+    height: 4px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+}
+
+/* Projetos */
+.projeto {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-purple);
+    transition: all 0.3s ease;
+}
+
+.projeto:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(1.02);
+    border-left-color: var(--primary-pink);
+    box-shadow: var(--purple-shadow);
+}
+
+.projeto h3 {
+    color: var(--primary-pink);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* Habilidades */
+.habilidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.habilidade {
+    background: var(--darker-bg);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.habilidade h4 {
+    color: var(--primary-purple);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.habilidade ul {
+    list-style: none;
+}
+
+.habilidade ul li {
+    margin-bottom: 10px;
+    color: var(--text-gray);
+}
+
+.habilidade ul li::before {
+    content: '⚡';
+    margin-right: 10px;
+    color: var(--primary-pink);
+}
+
+/* Aside */
+aside .widget {
+    background: var(--darker-bg);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+aside .widget h3 {
+    color: var(--primary-pink);
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: var(--neon-shadow);
+}
+
+button {
+    background: var(--gradient-main);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--neon-shadow);
+    filter: brightness(1.1);
+}
+
+/* Página de Links */
+.links-main {
+    display: block;
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+.social-button {
+    background: var(--darker-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    border-left: 6px solid var(--primary-pink);
+    animation: neonPulse 3s infinite;
+}
+
+.social-button:hover {
+    border-left-color: var(--primary-purple);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-content i {
+    color: var(--primary-pink);
+}
+
+.social-button strong {
+    color: var(--text-light);
+}
+
+/* Rodapé */
+footer {
+    padding: 60px 0;
+    text-align: center;
+    background: var(--darker-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-gray);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    header h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Toques Finais UAU */
+::selection {
+    background: var(--primary-pink);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-main);
+    border-radius: 5px;
+}
+
+/* Efeito de vidro (Glassmorphism) para os widgets */
+aside .widget {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilização extra para ícones na página principal */
+section h2 i {
+    font-size: 1.8rem;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Botão de voltar na página de links */
+nav ul li a[href="index.html"] {
+    border: 1px solid var(--primary-purple);
+    border-radius: 50px;
+    padding: 8px 25px;
+    margin-top: 5px;
+}
+
+nav ul li a[href="index.html"]:hover {
+    background: var(--primary-purple);
+    color: white;
+    box-shadow: var(--purple-shadow);
+}
